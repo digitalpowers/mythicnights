@@ -1,0 +1,55 @@
+﻿@page "/event/{eventId}"
+
+<h1>Events</h1>
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHeaderCell>Id</TableHeaderCell>
+            <TableHeaderCell>Time</TableHeaderCell>
+            <TableHeaderCell>Total Signed Up</TableHeaderCell>
+            <TableHeaderCell></TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableRowCell>@mythicNight.Id</TableRowCell>
+            <TableRowCell>@mythicNight.EventTime</TableRowCell>
+            <TableRowCell>@mythicNight.Attending.Count()</TableRowCell>
+            <TableRowCell><Button Clicked="()=>GenerateGroups()">Generate Groups</Button></TableRowCell>
+        </TableRow>
+    </TableBody>
+</Table>
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHeaderCell>Tank</TableHeaderCell>
+            <TableHeaderCell>Healer</TableHeaderCell>
+            <TableHeaderCell>Dps</TableHeaderCell>
+            <TableHeaderCell>Dps</TableHeaderCell>
+            <TableHeaderCell>Dps</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var group in groups)
+        {
+            <TableRow>
+                <TableRowCell>@group.Tank</TableRowCell>
+                <TableRowCell>@group.Healer</TableRowCell>
+                <TableRowCell>@group.Dps1</TableRowCell>
+                <TableRowCell>@group.Dps2</TableRowCell>
+                <TableRowCell>@group.Dps3</TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
+
+    Attending
+<Dropzone Items="@mythicNight.Attending">
+    <PlayerView playerId="@context" />
+</Dropzone>
+    Ignored
+<Dropzone Items="@ignored">
+    <PlayerView playerId="@context" />
+</Dropzone>
+

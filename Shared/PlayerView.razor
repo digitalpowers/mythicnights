@@ -1,0 +1,15 @@
+﻿<span style="display: flex; border-radius: 8px; border: 2px solid #73AD21; min-width: 100px; ">
+    @player.Nickname
+        @if (player.CanDoRole(Role.Tank))
+        {
+            <img src="images/tank-01.svg" width="16" height="16" />
+        }
+        @if (player.CanDoRole(Role.Healer))
+        {
+            <img src="images/heal-01.svg" width="16" height="16" />
+        }
+        @if (player.CanDoRole(Role.Dps))
+        {
+            <img src="images/dps-01.svg" width="16" height="16" />
+        }
+</span>

@@ -1,0 +1,23 @@
+﻿@page "/events"
+
+<h1>Events</h1>
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHeaderCell>Id</TableHeaderCell>
+            <TableHeaderCell>Time</TableHeaderCell>
+            <TableHeaderCell>Total Signed Up</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach(var mnight in Events)
+        {
+        string path = $"event/{mnight.Id}";
+        <TableRow>
+            <TableRowCell><a href="@path">@mnight.Id</a></TableRowCell>
+            <TableRowCell>@mnight.EventTime</TableRowCell>
+            <TableRowCell>@mnight.Attending.Count()</TableRowCell>
+        </TableRow>
+        }
+    </TableBody>
+</Table>

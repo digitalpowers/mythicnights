@@ -1,0 +1,63 @@
+﻿@page "/toons"
+
+<h1>Toons</h1>
+@if (Toons is null)
+{
+    <p>Loading ...</p>
+}
+else
+{
+    <Button Clicked="Update">Update</Button>
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>iLvl</TableHeaderCell>
+                <TableHeaderCell>RIO</TableHeaderCell>
+                <TableHeaderCell>Main Spec</TableHeaderCell>
+                <TableHeaderCell>Off Spec</TableHeaderCell>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            @foreach (var toon in Toons)
+            {
+                <TableRow>
+                    <TableRowCell>@toon.FullName</TableRowCell>
+                    <TableRowCell>@toon.iLvl</TableRowCell>
+                    <TableRowCell>@toon.RaiderIO</TableRowCell>
+                    <TableRowCell>
+                        @if (@toon.PreferedRole == Role.Tank)
+                        {
+                            <img src="images/tank-01.svg" width="16" height="16" />
+                        }
+                        @if (@toon.PreferedRole == Role.Healer)
+                        {
+                            <img src="images/heal-01.svg" width="16" height="16" />
+                        }
+                        @if (@toon.PreferedRole == Role.Dps)
+                        {
+                            <img src="images/dps-01.svg" width="16" height="16" />
+                        }
+                        @toon.PreferedRole
+                    </TableRowCell>
+                    <TableRowCell>
+                        @if (@toon.Offspec == Role.Tank)
+                        {
+                            <img src="images/tank-01.svg" width="16" height="16" />
+                        }
+                        @if (@toon.Offspec == Role.Healer)
+                        {
+                            <img src="images/heal-01.svg" width="16" height="16" />
+                        }
+                        @if (@toon.Offspec == Role.Dps)
+                        {
+                            <img src="images/dps-01.svg" width="16" height="16" />
+                        }
+                        @toon.Offspec
+                    </TableRowCell>
+
+                </TableRow>
+            }
+        </TableBody>
+    </Table>
+}
